@@ -1,0 +1,150 @@
+/*
+Created: 5/17/2024
+Modified: 5/22/2024
+Model: MySQL 8.0
+Database: MySQL 8.0
+*/
+
+-- Create tables section -------------------------------------------------
+
+-- Table users
+
+CREATE TABLE `users`
+(
+  `user_id` INT AUTO_INCREMENT NOT NULL,
+  `username` CHAR(20) NOT NULL,
+  `password_hash` CHAR(20) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `permission_level` INT NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `uporabnik_id` (`user_id`)
+);
+
+-- Table lestvica
+
+CREATE TABLE `lestvica`
+(
+  `lestvice_id` INT AUTO_INCREMENT NOT NULL,
+  `zmage` INT NOT NULL,
+  `naj_level` INT NOT NULL,
+  `datum` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`lestvice_id`),
+  UNIQUE KEY `lestvice_id` (`lestvice_id`)
+);
+
+-- Table igra
+
+CREATE TABLE `igra`
+(
+  `igra_id` INT AUTO_INCREMENT NOT NULL,
+  `level` INT NOT NULL,
+  `vprasanja_lahko_id` INT,
+  `vprasanja_srednje_id` INT,
+  `vprasanja_tezko_id` INT,
+  PRIMARY KEY (`igra_id`),
+  UNIQUE KEY `igra_id` (`igra_id`),
+  INDEX `IX_Relationship14` (`vprasanja_lahko_id`),
+  INDEX `IX_Relationship15` (`vprasanja_srednje_id`),
+  INDEX `IX_Relationship16` (`vprasanja_tezko_id`)
+);
+
+-- Table vprasanja_srednje
+
+CREATE TABLE `vprasanja_srednje`
+(
+  `vprasanja_srednje_id` INT AUTO_INCREMENT NOT NULL,
+  `Vprasanje_text` TEXT NOT NULL,
+  `Od1` CHAR(100) NOT NULL,
+  `Od2` CHAR(100) NOT NULL,
+  `Od3` CHAR(100) NOT NULL,
+  `Od4` CHAR(100) NOT NULL,
+  `Pravilen_Odg` INT NOT NULL,
+  `Cas` INT NOT NULL,
+  PRIMARY KEY (`vprasanja_srednje_id`),
+  UNIQUE KEY `vprasanja_id` (`vprasanja_srednje_id`)
+);
+
+-- Table Entity1
+
+CREATE TABLE `Entity1`
+(
+  `naj_level` INT NOT NULL,
+  `cas` TIMESTAMP NOT NULL,
+  `user_id` INT,
+  `igra_id` INT,
+  INDEX `IX_Relationship9` (`user_id`),
+  INDEX `IX_Relationship10` (`igra_id`)
+);
+
+-- Table vprasanja_lahko
+
+CREATE TABLE `vprasanja_lahko`
+(
+  `vprasanja_lahko_id` INT AUTO_INCREMENT NOT NULL,
+  `Vprasanje_text` TEXT NOT NULL,
+  `Od1` CHAR(100) NOT NULL,
+  `Od2` CHAR(100) NOT NULL,
+  `Od3` CHAR(100) NOT NULL,
+  `Od4` CHAR(100) NOT NULL,
+  `Pravilen_Odg` INT NOT NULL,
+  `Cas` INT NOT NULL,
+  `igra_id` INT,
+  PRIMARY KEY (`vprasanja_lahko_id`),
+  UNIQUE KEY `vprasanja_id` (`vprasanja_lahko_id`),
+  INDEX `IX_Relationship8` (`igra_id`)
+);
+
+-- Table vprasanja_tezko
+
+CREATE TABLE `vprasanja_tezko`
+(
+  `vprasanja_tezko_id` INT AUTO_INCREMENT NOT NULL,
+  `Vprasanje_text` TEXT NOT NULL,
+  `Od1` CHAR(100) NOT NULL,
+  `Od2` CHAR(100) NOT NULL,
+  `Od3` CHAR(100) NOT NULL,
+  `Od4` CHAR(100) NOT NULL,
+  `Pravilen_Odg` INT NOT NULL,
+  `Cas` INT NOT NULL,
+  `igra_id` INT,
+  PRIMARY KEY (`vprasanja_tezko_id`),
+  UNIQUE KEY `vprasanja_id` (`vprasanja_tezko_id`),
+  INDEX `IX_Relationship8` (`igra_id`)
+);
+
+-- Create foreign keys (relationships) section -------------------------------------------------
+
+ALTER TABLE `Entity1` 
+ADD CONSTRAINT `Relationship9` 
+FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) 
+ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `Entity1` 
+ADD CONSTRAINT `Relationship10` 
+FOREIGN KEY (`igra_id`) REFERENCES `igra` (`igra_id`) 
+ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `Entity1`
+ADD COLUMN `lestvice_id` INT;
+
+ALTER TABLE `Entity1`
+ADD CONSTRAINT `FK_lestvica_Entity1`
+FOREIGN KEY (`lestvice_id`) REFERENCES `lestvica`(`lestvice_id`)
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;
+
+ALTER TABLE `igra` 
+ADD CONSTRAINT `Relationship14` 
+FOREIGN KEY (`vprasanja_lahko_id`) REFERENCES `vprasanja_lahko` (`vprasanja_lahko_id`) 
+ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `igra` 
+ADD CONSTRAINT `Relationship15` 
+FOREIGN KEY (`vprasanja_srednje_id`) REFERENCES `vprasanja_srednje` (`vprasanja_srednje_id`) 
+ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `igra` 
+ADD CONSTRAINT `Relationship16` 
+FOREIGN KEY (`vprasanja_tezko_id`) REFERENCES `vprasanja_tezko` (`vprasanja_tezko_id`) 
+ON DELETE RESTRICT ON UPDATE RESTRICT;
+e

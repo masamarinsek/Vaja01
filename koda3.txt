@@ -1,0 +1,33 @@
+mysqli_query - pošlje SQL poizvedbo na podatkovno bazo prek povezave
+
+mysqli_fetch_array - pridobi vrstico iz rezultata poizvedbe kot asociativno ali numerično polje (ali oboje). Uporablja se za branje podatkov iz rezultatov,
+                     ki jih vrne mysqli_query.
+
+htmlspecialchars - pretvori posebne znake (kot so <, >, &, ") v HTML entitete, da prepreči napade.
+
+mysqli_num_rows - vrne število vrstic v rezultatu poizvedbe, ki jo vrne mysqli_query.
+
+foreach - uporablja se za iteracijo (prehajanje) skozi elemente v tabeli (array). 
+          Za vsak element izvede določeno kodo.
+
+number_format - oblikuje število z določenim številom decimalk in ločili za tisočice.
+
+addslashes - doda poševnice (\) pred znake, kot so enojni narekovaj ('), dvojni narekovaj 
+             ("), poševnica () in NULL. Uporablja se za pripravo besedila, da se varno vstavi v SQL poizvedbo.
+
+is_array - preverja, ali je podani argument tabela (array).
+
+mysqli_insert_id - vrne ID zadnje vrstice, ki je bila vstavljena v podatkovno bazo z uporabo
+                   avtomatskega inkrementa (AUTO_INCREMENT). Uporablja se po uspešnem INSERT ukazu za pridobitev
+                   ID-ja novega zapisa.
+
+
+mysqli_real_escape_string - v vhodnem nizu varno pobegne posebne znake,
+                            da prepreči SQL injekcije pri vstavljanju podatkov v bazo.
+
+
+intval - intval pretvori podano vrednost v celo število (integer), kar pomaga zagotoviti, 
+         da so podatki pravilne vrste
+
+strtotime - strtotime pretvori datum oziroma čas v obliki niza npr. "2025-06-12".
+

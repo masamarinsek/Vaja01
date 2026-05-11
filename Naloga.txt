@@ -1,0 +1,24 @@
+Naloga  
+
+Izboljšava spletne strani: Integracija Google Analytics za spremljanje prometa na vaši WordPress spletni strani. 
+
+Analiza prometa: Ugotavljanje vedenja uporabnikov s pomočjo analitičnih podatkov, kot so število obiskovalcev, čas na strani in najbolj obiskane vsebine. 
+
+Ustvarjanje e-poštnega računa: Nastavitev e-poštnega računa na vaši domeni za profesionalno komunikacijo (npr. ime@domena.si). 
+
+Obrazec za e-novice: Dodajanje obrazca za prijavo na e-novice, kar omogoča uporabnikom, da se naročijo na prejemanje novic in obvestil. 
+
+Prijava sošolcev: Spodbujanje vsaj 10 sošolcev, naj se prijavijo na e-novice, in preverjanje pravilnega delovanja sistema za pošiljanje. 
+
+Praktične izkušnje: Pridobivanje praktičnih izkušenj z orodji za upravljanje vsebin in e-poštni marketing ter razumevanje pomena analitike za izboljšanje uporabniške izkušnje. 
+
+Pripravite poročilo (predloga je pripeta k tej vaji).  •	Izberite eno od zgornjih storitev (Netlify ali Vercel).
+•	Ustvarite spletno stran o izbrani temi, ki je primerna za šolo. Tema lahko vključuje šolske projekte, dogodke, promocijo šolskih dejavnosti ali podobno.
+•	Dokumentirajte postopek z zaslonskimi slikami, ki prikazujejo ključne korake, kot so:
+o	Ustvarjanje računa na izbrani platformi
+o	Ustvarjanje novega projekta
+o	Nalaganje datotek spletne strani
+o	Dodelitev domene (če je potrebno)
+
+
+Poročilo naložite na vaš OneDrive in k vaji oddate povezavo do vašega poročila. 

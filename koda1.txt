@@ -1,0 +1,28 @@
+    } else {
+		
+		
+        // === NAPAČEN ODGOVOR ===
+		//shrani osnovne podatke
+
+        $id = (int)$_SESSION['id_u'];
+        $dosezeno = $_SESSION['trenutno']; //pri katerm vpr je bil ko je nardil napako
+        $cas = '00:10:15';
+
+        $sql = "INSERT INTO igre (id_u, dosezeno_vprasanje, zasluzen_denar, konec, porabljen_cas)
+                VALUES ($id, $dosezeno, 0, NOW(), '$cas')";
+
+        if (!mysqli_query($link, $sql)) {
+            die("Napaka pri shranjevanju (napačen odgovor): " . mysqli_error($link));
+        }
+
+        echo "<div>
+            <h1>Napačen odgovor!</h1>
+            <p>Nisi nič zaslužil/a.</p>
+            <a href='igra.php'><button>Poskusi znova</button></a>
+            <a href='index.php'><button>Domov</button></a>
+            <a href='leaderboard.php'><button>Leaderboard</button></a>
+            </div>";
+        unset($_SESSION['trenutno'], $_SESSION['vprasanja']);
+        exit;
+    }
+}
